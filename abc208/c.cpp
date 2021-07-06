@@ -18,31 +18,48 @@ ll C(ll n, ll k) {
     return (ll)(res + 0.01);
 }
 vector<vll> readGraph(ll n,ll m){
-   vector<vll> g(n);
-   for(ll i=0;i<m;i++){
-       ll a,b;
-       cin>>a>>b;
-       //sc.read(a,b);
-       //a--;b--;
-       g[a].pb(b);
-       g[b].pb(a);
-   }
-   return g;
+    vector<vll> g(n);
+    for(ll i=0;i<m;i++){
+        ll a,b;
+        cin>>a>>b;
+        //sc.read(a,b);
+        //a--;b--;
+        g[a].pb(b);
+        g[b].pb(a);
+    }
+    return g;
 }
 vector<vll> readTree(int n){
-   return readGraph(n,n-1);
+    return readGraph(n,n-1);
 }
 //----------------------------------------------------------------------------
 void solve()
 {
     ll n,k;
     cin>>n>>k;
-    ll ans=0;
-    for(ll j=1;j<=n;j++)
-    for(ll i=1;i<=k;i++){
-        ans+=100*j+i;
-    }                
-    cout<<ans;                                                                                                                                                                                                                                                                                                    
+    vll a(n);
+    vll b(n);
+    for (ll j = 0; j < n; j++) {
+        cin>>a[j];
+        b[j]=a[j];
+    }
+    if(k%n==0){
+        for (ll i = 0; i < n; i++) {
+            cout<<k/n<<" ";
+            
+        }
+    }
+    else{
+        ll z=k%n;
+        sort(all(a));
+        set<ll> s;
+        ll x=0;
+        while(z--)s.insert(a[x++]);
+        for(ll i=0;i<n;i++){
+            if(s.count(b[i]))cout<<k/n+1<<"\n";
+            else cout<<k/n<<"\n";
+         }
+    }
 }
 int main() {
 FAST;

@@ -18,26 +18,34 @@ ll C(ll n, ll k) {
     return (ll)(res + 0.01);
 }
 vector<vll> readGraph(ll n,ll m){
-   vector<vll> g(n);
-   for(ll i=0;i<m;i++){
-       ll a,b;
-       cin>>a>>b;
-       //sc.read(a,b);
-       //a--;b--;
-       g[a].pb(b);
-       g[b].pb(a);
-   }
-   return g;
+    vector<vll> g(n);
+    for(ll i=0;i<m;i++){
+        ll a,b;
+        cin>>a>>b;
+        //sc.read(a,b);
+        //a--;b--;
+        g[a].pb(b);
+        g[b].pb(a);
+    }
+    return g;
 }
 vector<vll> readTree(int n){
-   return readGraph(n,n-1);
+    return readGraph(n,n-1);
 }
 //----------------------------------------------------------------------------
 void solve()
 {
-   ll x;
-   cin>>x;
-   cout<<(x==1?0:1)<<endl;
+    int a,b;
+    cin>>a>>b;
+    ll min_moves=0;
+    min_moves=(b+5)/6;
+    if(a<min_moves||b<a){
+        cout<<"No";
+        return;
+    }
+    cout<<"Yes";
+        
+
 }
 int main() {
 FAST;
